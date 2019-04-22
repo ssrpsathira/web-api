@@ -27,6 +27,7 @@ sudo apt-get install mysql-server -y
 sudo apt-get install composer
 
 # Setup Dev environment
+php bin/console server:stop
 php bin/console server:start 0.0.0.0:8000
 php bin/console doctrine:database:create --if-not-exists
 composer install
