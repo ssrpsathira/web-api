@@ -22,3 +22,12 @@ sudo systemctl restart apache2
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password sathira321'
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password sathira321'
 sudo apt-get install mysql-server -y
+
+# Install composer
+sudo apt-get install composer
+
+# Setup Dev environment
+php bin/console server:start 0.0.0.0:8000
+php bin/console doctrine:database:create --if-not-exists
+composer install
+php bin/console doctrine:migrations:migrate
